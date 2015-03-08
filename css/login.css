@@ -1,0 +1,16 @@
+ .profile-img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  margin-top: 10px;
+  display: block;
+  }
+
+  .card {
+  margin-top: 10%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  body{
+    background-color: #26a69a; 
+  }
