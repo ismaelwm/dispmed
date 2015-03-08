@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if($_SESSION['username']== 1)
+  header('location: medicamento.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +20,11 @@
     <div class="card col s12 m4 offset-m4 ">
       <img class="profile-img" src="img/logo_login.png">
 
-<!--empieza el formulario-->
+      <!--empieza el formulario-->
       <form id="loginform" name="loginform" method="POST" action="bd/validar.php" enctype="plain/text">
 
         <div class="row">
-            <div class="input-field">
+          <div class="input-field">
             <input id="username" name="username" type="text">
             <label  for="username">Usuario</label>
           </div>
@@ -30,8 +36,8 @@
           </div>
         </div>
         <button id="acceder" class="btn waves-effect waves-light col s12" type="submit" name="action">Acceder</button>
-      
-      <!--termina el formulario-->
+        
+        <!--termina el formulario-->
       </form>
 
 
@@ -43,11 +49,11 @@
 
       $('#loginform').submit(function () {
 
-  $.post("bd/validar.php",$("#loginform").serialize();
-  return false;
-});
+        $.post("bd/validar.php",$("#loginform").serialize();
+          return false;
+        });
 
-    </script>
+      </script>
 
-  </body>
-  </html>
+    </body>
+    </html>
