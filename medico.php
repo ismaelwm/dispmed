@@ -84,7 +84,7 @@ if($_SESSION['username']!= 1)
 					</div>
 					
 					<div class="input-field col s6">
-						<input  id="cedula" name="cedula" type="text" pattern="[0-9]{11}" title="Cédula sin guiones" x required>
+						<input  id="cedula" name="cedula" type="text" pattern="[0-9]{11}" title="Cédula sin guiones" class="validate" required>
 						<label for="cedula">Cédula</label>
 					</div>
 				</div>
