@@ -50,7 +50,7 @@ if($_SESSION['username']!= 1)
 		<div id="test1" class="col s12">
 			<form>
 				<div class="input-field col s12">
-					<input id="buscar" name = "buscar" type="text" class="validate">
+					<input id="buscar" type="text" class="validate">
 					<label for="buscar">Buscar</label>
 				</div>
 			</form>
@@ -75,30 +75,30 @@ if($_SESSION['username']!= 1)
 
 		<div id="test2" class="col s12">
 
-			<form id="medicoform">
+			<form id="medicoform" name="medicoform" method="POST" action="bd/insertar_medico.php" enctype="plain/text">
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input  id="nombre" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
+						<input  id="nombre" name="nombre" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
 						<label for="nombre">Nombre</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<input  id="cedula" type="text" pattern="[0-9]{11}" title="Cédula sin guiones" x required>
+						<input  id="cedula" name="cedula" type="text" pattern="[0-9]{11}" title="Cédula sin guiones" x required>
 						<label for="cedula">Cédula</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input  id="especialidad" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
+						<input  id="especialidad" name="especialidad" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
 						<label for="especialidad">Especialidad</label>
 					</div>
 					
 
 					<div class="col s6">
 						<label>Tanda</label>
-						<select id="tanda">
+						<select id="tanda" name="tanda">
 							<option value="0">Matutina</option>
 							<option value="1">Vespertina</option>
 						</select>
@@ -108,19 +108,21 @@ if($_SESSION['username']!= 1)
 				<div class="row"> 
 					<div class="col s6">
 						<label>Estado</label>
-						<select  id="estado">
+						<select  id="estado" name="estado">
 							<option value="0">Activo</option>
 							<option value="1">Inactivo</option>
 						</select>
 					</div>
 				</div>
-				</form>
 				<div class="buttons">
 					<button id="aceptar" class="btn waves-effect waves-light">Agregar</button>
 					<button id = "cancelar" class="btn waves-effect red darken-1" type="button">Cancelar</button>
 				</div>
-				</div>
+			</form>
+
 			
+		</div>
+		
 
 		
 

@@ -19,7 +19,6 @@ if($tipofarmaco== 3)
 $ubicacion = "Tramo ".$tramo." Estante ".$estante." Celda ".$celda;
 
 //vamo allá
-if($tipofarmaco!= ""){
 $conn_dispmedico = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
 $result = $conn_dispmedico->query("SELECT * FROM medicamento WHERE ubicacion='".$ubicacion."'");
 if ($row = $result->fetch() == null) {
@@ -27,12 +26,13 @@ if ($row = $result->fetch() == null) {
 	$query_medicamento = "INSERT INTO medicamento (nombre, marca, cantidad, tipofarmaco, ubicacion) values ('$nombre', '$marca', '$cantidad', '$tipofarmaco', '$ubicacion')";
 	//Mete mano ahora!
 	$run_medicamento_q = $conn_dispmedico->query($query_medicamento);
+	
+	$status = '';
+	echo $status;
 }
 else {
-	echo 'Esta ubicación está ocupada!';
-}
-}else{
-	echo 'Elija un tipo de farmaco!';
+	$status = 1;
+	echo $status;
 }
 
 ?>

@@ -26,8 +26,11 @@ if ($row = $result->fetch() == null) {
 	$query_medico = "INSERT INTO medico (nombre, cedula, especialidad, tanda, estado) values ('$nombre', '$cedula', '$especialidad', '$tanda', '$estado')";
 	//Mete mano ahora!
 	$run_medicamento_q = $conn_dispmedico->query($query_medicamento);
+	$status = '';
+	echo $status;
 }
 else {
-	echo 'Esta cédula ya está registrada!';
+	$status = 1;
+	echo $status;
 }
 ?>

@@ -1,30 +1,32 @@
 $(function() {
 
-	$('#aceptar').click(function () {
+	$('#medicamentoform').submit(function () {
 
-		$.ajax({
+		$.post("bd/insertar_medicamento.php",$("#medicamentoform").serialize(), 
 
-			type : 'POST',
-			url : 'bd/insertar_medicamento.php',
-			data : {nombre : $('#nombre').val(), marca: $('#marca').val(), cantidad:$('#cantidad').val(), tramo: $('#tramo').val(), estante: $('#estante').val(), celda: $('#celda').val(), tipoFarmaco:$('#tipoFarmaco').val()},
-			success : function(data) {
-
-				if (data.trim() != '') {
-					toast(data, 3000);
-				} else {
-
+			function(data){
+				
+				if (data == ''){
 					$('#nombre').val("");
 					$('#marca').val("");
 					$('#cantidad').val("");
 					$('#tramo').val("");
 					$('#estante').val("");
 					$('#celda').val("");
-					$('#tipoFarmaco').val("Seleccione un tipo");
-					toast('Se ha agregado el medicamento', 3000);
+					
+					toast('Se ha agregado el medicamento!', 3000);
+				}else{
+
+					toast('Esta ubicación está ocupada!', 3000);
+
 				}
-			}
-		});
+
+
+			});
+
+		return false;
 	});
+
 
 
 	var wasclicked = false, tmp = '';

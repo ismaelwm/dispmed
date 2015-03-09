@@ -49,7 +49,7 @@ if($_SESSION['username']!= 1)
 
 			<form>
 				<div class="input-field col s12">
-					<input id="buscar" name = "buscar" type="text" class="validate">
+					<input id="buscar" type="text" class="validate">
 					<label for="buscar">Buscar</label>
 				</div>
 			</form>
@@ -77,30 +77,29 @@ if($_SESSION['username']!= 1)
 		
 		<div id="test2" class="col s12">
 
-			<form id="medicamentoform">
+			<form id="medicamentoform" name="medicamentoform" method="POST" action="bd/insertar_medicamento.php" enctype="plain/text">
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input id="nombre" type="text" class="validate" required>
+						<input id="nombre" name="nombre" type="text" class="validate" required>
 						<label for="nombre">Nombre</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<input id="marca" type="text" class="validate" required>
+						<input id="marca" name="marca" type="text" class="validate" required>
 						<label for="marca">Marca</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input id="cantidad" type="text" pattern="[0-9]+" title="Solo números" class="validate" required>
+						<input id="cantidad" name="cantidad" type="text" pattern="[0-9]+" title="Solo números" class="validate" required>
 						<label for="cantidad">Cantidad</label>
 					</div>
 					
 					<div class="col s6">
 						<label>Tipo Fármaco</label>
-						<select id="tipoFarmaco">
-							<option value="" disabled selected>Seleccione un tipo</option>
+						<select id="tipoFarmaco" name="tipoFarmaco">
 							<option value="1">Capsula</option>
 							<option value="2">Comprimido</option>
 							<option value="3">Jarabe</option>
@@ -110,27 +109,28 @@ if($_SESSION['username']!= 1)
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input id="tramo" type="text" placeholder="1" pattern="[0-9]+" title="Solo números" class="validate" required>
+						<input id="tramo" name="tramo" type="text" placeholder="1" pattern="[0-9]+" title="Solo números" class="validate" required>
 						<label for="tramo">Tramo</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<input  id="estante" type="text" placeholder="B" pattern="[A-Z]" title="Solo letras" class="validate" required>
+						<input  id="estante" name="estante" type="text" placeholder="B" pattern="[A-Z]" title="Solo letras" class="validate" required>
 						<label for="estante">Estante</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input  id="celda" type="text" placeholder="2" pattern="[0-9]+" title="Solo números" class="validate" required>
+						<input  id="celda" name="celda" type="text" placeholder="2" pattern="[0-9]+" title="Solo números" class="validate" required>
 						<label for="celda">Celda</label>
 					</div>
 				</div>
-				</form>
+				
 			<div class="buttons">
-				<button id="aceptar" class="btn waves-effect waves-light" type="submit">Agregar</button>
+				<button id="aceptar" class="btn waves-effect waves-light" type="submit" name="action">Agregar</button>
 				<button id = "cancelar" class="red darken-1 waves-effect btn" type="button">Cancelar</button>
 			</div>
+			</form>
 			</div>
 			
 		

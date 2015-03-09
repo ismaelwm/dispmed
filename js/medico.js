@@ -1,25 +1,26 @@
 $(function() {
 
-	$('#aceptar').click(function () {
+	$('#medicoform').submit(function () {
 
-		$.ajax({
+		$.post("bd/insertar_medico.php",$("#medicoform").serialize(), 	
 
-			type : 'POST',
-			url : 'bd/insertar_medico.php',
-			data : {nombre : $('#nombre').val(), cedula: $('#cedula').val(), especialidad :$('#especialidad').val(), tanda: $('#tanda').val(), estado: $('#estado').val()},
-			success : function(data) {
-
-				if (data.trim() != '') {
-					toast(data, 3000);
-				} else {
-
+			function(data){
+				
+				if (data == ''){
 					$('#nombre').val("");
 					$('#cedula').val("");
 					$('#especialidad').val("");
-					toast('Se ha agregado el médico', 3000);
+					toast('Se ha agregado el médico!', 3000);
+				}else{
+
+					toast('Esta cédula ya está registrada!', 3000);
+
 				}
-			}
-		});
+
+
+			});
+
+		return false;
 	});
 
 	var wasclicked = false, tmp = '';
