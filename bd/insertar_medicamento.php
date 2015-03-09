@@ -7,17 +7,19 @@ $tramo = $_POST['tramo'];
 $celda = $_POST['celda'];
 $estante = $_POST['estante'];
 
-if ($tipofarmaco == 1){
+if ($tipofarmaco == 1)
 	$tipofarmaco = 'Capsula';
-}elseif($tipofarmaco== 2){
+
+if($tipofarmaco== 2)
 	$tipofarmaco = 'Comprimido';
-}else{
+
+if($tipofarmaco== 3)	
 	$tipofarmaco='Jarabe';
-}
 
 $ubicacion = "Tramo ".$tramo." Estante ".$estante." Celda ".$celda;
 
 //vamo allá
+if($tipofarmaco!= ""){
 $conn_dispmedico = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
 $result = $conn_dispmedico->query("SELECT * FROM medicamento WHERE ubicacion='".$ubicacion."'");
 if ($row = $result->fetch() == null) {
@@ -27,7 +29,10 @@ if ($row = $result->fetch() == null) {
 	$run_medicamento_q = $conn_dispmedico->query($query_medicamento);
 }
 else {
-	echo 'Esta ubicación ya existe en la base de datos!';
+	echo 'Esta ubicación está ocupada!';
+}
+}else{
+	echo 'Elija un tipo de farmaco!';
 }
 
 ?>

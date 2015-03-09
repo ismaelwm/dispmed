@@ -26,13 +26,13 @@ if($_SESSION['username']!= 1)
 						<a href="#" class="brand-logo"><img src="img/logo.png"></a>
 						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down" id="staggered-test">
-							<li><a href="medicamento.php">Medicamento</i></a></li>
-							<li><a href="medicos.php">Médico</a></li>
+							<li><a href="#">Medicamento</i></a></li>
+							<li><a href="medico.php">Médico</a></li>
 							<li><a href="bd/CerrarSesion.php">Cerrar Sesión</a></li>
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
-							<li><a href="medicamento.php">Medicamento</i></a></li>
-							<li><a href="medicos.php">Médico</a></li>
+							<li><a href="#">Medicamento</i></a></li>
+							<li><a href="medico.php">Médico</a></li>
 							<li><a href="bd/cerrarsesion.php">Cerrar Sesión</a></li>
 						</ul>
 					</div>
@@ -126,66 +126,21 @@ if($_SESSION['username']!= 1)
 						<label for="celda">Celda</label>
 					</div>
 				</div>
-			</form>
+				</form>
 			<div class="buttons">
-					<button id="aceptar" class="btn waves-effect waves-light" type="submit">Agregar</button>
-					<button id = "cancelar" class="red darken-1 waves-effect btn" type="button">Cancelar</button>
-				</div>
-		</div>
+				<button id="aceptar" class="btn waves-effect waves-light" type="submit">Agregar</button>
+				<button id = "cancelar" class="red darken-1 waves-effect btn" type="button">Cancelar</button>
+			</div>
+			</div>
+			
+		
+
 		
 		<!--Import jQuery before materialize.js-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
-		<script type="text/javascript" src="js/myjs.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript" src="js/medicamento.js"></script>
 
-		<script type="text/javascript">
-
-			$(function() {
-
-				var wasclicked = false, tmp = '';
-				$('#searchButton').click(function() {
-					
-
-					var nombre = $('#buscar').val(),
-					etiqueta = '<table class= "striped" id=tablaMedicamento>'+
-					'<tr><th>Nombre</th><th>T/Fármaco</th><th>Marca</th><th>Cantidad</th><th>Ubicación</th></tr><tr>';
-					if (tmp != nombre)
-						wasclicked = false;              
-
-					if (wasclicked == false) {
-
-						$.ajax({
-
-							type : 'POST',
-							url : 'bd/buscar_medicamento.php',
-							data : {buscar:nombre},
-							success : function(d) {
-
-								if (d==''){
-
-									toast('No se encontraron coincidencias', 3000);
-
-								}else{
-									var r = d.split('*');
-									for (var i = 0; i < r.length-1; i++) {
-
-										if (r[i] == 'tr')
-											etiqueta += '</tr><tr>';
-										else
-											etiqueta += '<td>'+ r[i]+'</td>';
-									}
-									etiqueta += '</tr></table>';  
-									$('#tablaMedicamento').html(etiqueta); 
-									wasclicked = true;  
-									tmp = nombre;
-								}  
-							}
-						}); 
-					}
-				});
-
-			});
-</script>
-
-</body>
-</html>
+	</body>
+	</html>

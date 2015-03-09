@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if($_SESSION['username']== 1)
-    header('location: medicamento.php');
+  header('location: medicamento.php');
 ?>
 
 <!DOCTYPE html>
@@ -40,33 +40,7 @@ if($_SESSION['username']== 1)
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript">
-
-        $(function() {
-
-            $('#acceder').click(function() {
-                
-                var nombre = $('#username').val(), pass = $('#password').val();
-                
-                $.ajax({
-
-                    type : 'POST',
-                    url : 'bd/validar.php',
-                    data : {username: nombre, password: pass},
-                    success : function(data) {
-                        
-                      if (data.trim() == '') {
-                        window.location = 'medicamento.php';
-                      } 
-                      else {
-                        toast(data, 3000);
-                      }
-                    }
-                });
-            });  
-        });
-
-    </script>
-
-    </body>
-    </html>
+    <script type="text/javascript" src="js/login.js"></script>
+    
+  </body>
+  </html>

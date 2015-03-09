@@ -28,12 +28,12 @@ if($_SESSION['username']!= 1)
 						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 						<ul class="right hide-on-med-and-down" id="staggered-test">
 							<li><a href="medicamento.php">Medicamento</i></a></li>
-							<li><a href="medicos.php">Médico</a></li>
+							<li><a href="#">Médico</a></li>
 							<li><a href="bd/cerrarsesion.php">Cerrar Sesión</a></li>
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a href="medicamento.php">Medicamento</i></a></li>
-							<li><a href="medicos.php">Médico</a></li>
+							<li><a href="#">Médico</a></li>
 							<li><a href="bd/cerrarsesion.php">Cerrar Sesión</a></li>
 						</ul>
 					</div>
@@ -75,30 +75,30 @@ if($_SESSION['username']!= 1)
 
 		<div id="test2" class="col s12">
 
-			<form id="medicoform" name="medicoform" action="bd/insertar_medico.php" method="POST" enctype="plain/text">
+			<form id="medicoform">
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="nombre" id="nombre" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
+						<input  id="nombre" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
 						<label for="nombre">Nombre</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<input name="cedula" id="cedula" type="text" pattern="[0-9]{11}" title="Cédula sin guiones" x required>
+						<input  id="cedula" type="text" pattern="[0-9]{11}" title="Cédula sin guiones" x required>
 						<label for="cedula">Cédula</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="especialidad" id="especialidad" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
+						<input  id="especialidad" type="text" pattern="[A-Z ]+" title="Solo letras" class="validate" required>
 						<label for="especialidad">Especialidad</label>
 					</div>
 					
 
 					<div class="col s6">
 						<label>Tanda</label>
-						<select name="tanda" id="tanda">
+						<select id="tanda">
 							<option value="0">Matutina</option>
 							<option value="1">Vespertina</option>
 						</select>
@@ -108,77 +108,27 @@ if($_SESSION['username']!= 1)
 				<div class="row"> 
 					<div class="col s6">
 						<label>Estado</label>
-						<select name="estado" id="estado">
+						<select  id="estado">
 							<option value="0">Activo</option>
 							<option value="1">Inactivo</option>
 						</select>
 					</div>
 				</div>
-
+				</form>
 				<div class="buttons">
-					<button id="aceptar" class="btn waves-effect waves-light" type="submit" name="action">Agregar</button>
+					<button id="aceptar" class="btn waves-effect waves-light">Agregar</button>
 					<button id = "cancelar" class="btn waves-effect red darken-1" type="button">Cancelar</button>
 				</div>
+				</div>
+			
 
-			</form>
-
-		</div>
+		
 
 		<!--Import jQuery before materialize.js-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
-		<script type="text/javascript" src="js/myjs.js"></script>
-
-		<script type="text/javascript">
-
-			$(function() {
-
-				var wasclicked = false, tmp = '';
-				$('#searchButton').click(function() {
-					
-
-					var nombre = $('#buscar').val(),
-					etiqueta = '<table class= "striped" id=tablaMedico>'+
-					'<tr><th>Nombre</th><th>Cedula</th><th>Tanda</th><th>Especialidad</th><th>Estado</th></tr><tr>';
-					if (tmp != nombre)
-						wasclicked = false;              
-
-					if (wasclicked == false) {
-
-						$.ajax({
-
-							type : 'POST',
-							url : 'bd/buscar_medico.php',
-							data : {buscar:nombre},
-							success : function(d) {
-
-								if (d==''){
-
-									toast('No se encontraron coincidencias', 3000);
-
-								}else{
-									var r = d.split('*');
-									for (var i = 0; i < r.length-1; i++) {
-
-										if (r[i] == 'tr')
-											etiqueta += '</tr><tr>';
-										else
-											etiqueta += '<td>'+ r[i]+'</td>';
-									}
-									
-									etiqueta += '</tr></table>';  
-									$('#tablaMedico').html(etiqueta); 
-									wasclicked = true;  
-									tmp = nombre; 
-								} 
-							}
-
-						}); 
-					}
-				});
-
-			});
-</script>
-
-</body>
-</html>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript" src="js/medico.js"></script>
+		
+	</body>
+	</html>

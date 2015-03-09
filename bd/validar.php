@@ -9,7 +9,7 @@ $result = $db->query("SELECT * FROM users WHERE username ='".$username. "' AND p
 
 if($row=$result->fetch() == null){
 
-	echo 'La contraseña o el usuario es inválido!';
+	echo 'Verifique su usuario y contraseña!';
 } else {
 	session_start();
 	$_SESSION['username']=1;
