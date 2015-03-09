@@ -18,7 +18,7 @@ if ($tipofarmaco == 1){
 $ubicacion = "Tramo ".$tramo." Estante ".$estante." Celda ".$celda;
 
 //vamo allá
-$conn_dispmedico = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "root");
+$conn_dispmedico = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
 $result = $conn_dispmedico->query("SELECT * FROM medicamento WHERE ubicacion='".$ubicacion."'");
 if ($row = $result->fetch() == null) {
 
