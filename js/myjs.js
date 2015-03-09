@@ -1,4 +1,5 @@
 $(function() {
+
 	$('select').material_select();
 	
 	$(".button-collapse").sideNav();
@@ -32,19 +33,29 @@ $('#medicoform').submit(function () {
 	return false;
 });
 
+$('#aceptar').click(function () {
 
+	$.ajax({
 
-$('#medicamentoform').submit(function () {
+		type : 'POST',
+		url : 'bd/insertar_medicamento.php',
+		data : {nombre : $('#nombre').val(), marca: $('#marca').val(), cantidad:$('#cantidad').val(), tramo: $('#tramo').val(), estante: $('#estante').val(), celda: $('#celda').val(), tipoFarmaco:$('#tipoFarmaco').val()},
+		success : function(data) {
 
-	$.post("bd/insertar_medicamento.php",$("#medicamentoform").serialize(), function(data){
-		$('#nombre').val("");
-		$('#marca').val("");
-		$('#cantidad').val("");
-		$('#tramo').val("");
-		$('#estante').val("");
-		$('#celda').val("");
+			if (data.trim() != '') {
+				toast(data, 300);
+			} else {
+
+				$('#nombre').val("");
+				$('#marca').val("");
+				$('#cantidad').val("");
+				$('#tramo').val("");
+				$('#estante').val("");
+				$('#celda').val("");
+				$('#tipoFarmaco').val("Seleccione un tipo");
+			}
+		}
 	});
-	return false;
 });
 
 

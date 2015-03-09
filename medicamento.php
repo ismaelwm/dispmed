@@ -72,36 +72,34 @@ if($_SESSION['username']!= 1)
 			<div class="col s1 offset-s11">
 				<a id="btn1" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="botton" data-delay="50" data-tooltip="Agregar"><i class="mdi-content-add"></i></a>
 			</div>
-
-			
 		</div>
 
 		
 		<div id="test2" class="col s12">
 
-			<form id="medicamentoform" name="medicamentoform" action="bd/insertar_medicamento.php" method="POST" enctype="plain/text">
+			<form id="medicamentoform">
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="nombre" id="nombre" type="text" class="validate" required>
+						<input id="nombre" type="text" class="validate" required>
 						<label for="nombre">Nombre</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<input name="marca" id="marca" type="text" class="validate" required>
+						<input id="marca" type="text" class="validate" required>
 						<label for="marca">Marca</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="cantidad" id="cantidad" type="text" pattern="[0-9]+" title="Solo números" class="validate" required>
+						<input id="cantidad" type="text" pattern="[0-9]+" title="Solo números" class="validate" required>
 						<label for="cantidad">Cantidad</label>
 					</div>
 					
 					<div class="col s6">
 						<label>Tipo Fármaco</label>
-						<select name="tipoFarmaco" id="tipoFarmaco">
+						<select id="tipoFarmaco">
 							<option value="" disabled selected>Seleccione un tipo</option>
 							<option value="1">Capsula</option>
 							<option value="2">Comprimido</option>
@@ -112,31 +110,27 @@ if($_SESSION['username']!= 1)
 
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="tramo" id="tramo" type="text" placeholder="1" pattern="[0-9]+" title="Solo números" class="validate" required>
+						<input id="tramo" type="text" placeholder="1" pattern="[0-9]+" title="Solo números" class="validate" required>
 						<label for="tramo">Tramo</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<input name="estante" id="estante" type="text" placeholder="B" pattern="[A-Z]" title="Solo letras" class="validate" required>
+						<input  id="estante" type="text" placeholder="B" pattern="[A-Z]" title="Solo letras" class="validate" required>
 						<label for="estante">Estante</label>
 					</div>
 				</div>
 
-
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="celda" id="celda" type="text" placeholder="2" pattern="[0-9]+" title="Solo números" class="validate" required>
+						<input  id="celda" type="text" placeholder="2" pattern="[0-9]+" title="Solo números" class="validate" required>
 						<label for="celda">Celda</label>
 					</div>
 				</div>
-
-
-
-				<div class="buttons">
-					<button id="aceptar" class="btn waves-effect waves-light" type="submit" name="action">Agregar</button>
+			</form>
+			<div class="buttons">
+					<button id="aceptar" class="btn waves-effect waves-light" type="submit">Agregar</button>
 					<button id = "cancelar" class="red darken-1 waves-effect btn" type="button">Cancelar</button>
 				</div>
-			</form>
 		</div>
 		
 		<!--Import jQuery before materialize.js-->
@@ -147,7 +141,6 @@ if($_SESSION['username']!= 1)
 		<script type="text/javascript">
 
 			$(function() {
-
 
 				var wasclicked = false, tmp = '';
 				$('#searchButton').click(function() {
@@ -181,12 +174,10 @@ if($_SESSION['username']!= 1)
 										else
 											etiqueta += '<td>'+ r[i]+'</td>';
 									}
-									
 									etiqueta += '</tr></table>';  
 									$('#tablaMedicamento').html(etiqueta); 
 									wasclicked = true;  
 									tmp = nombre;
-
 								}  
 							}
 						}); 

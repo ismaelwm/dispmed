@@ -6,7 +6,6 @@ $tipofarmaco = $_POST['tipoFarmaco'];
 $tramo = $_POST['tramo'];
 $celda = $_POST['celda'];
 $estante = $_POST['estante'];
-//Mm no sé mucho sobre Materialize, so mete mano aquí.
 
 if ($tipofarmaco == 1){
 	$tipofarmaco = 'Capsula';
@@ -18,10 +17,17 @@ if ($tipofarmaco == 1){
 
 $ubicacion = "Tramo ".$tramo." Estante ".$estante." Celda ".$celda;
 
-
 //vamo allá
-$conn_dispmedico = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
-$query_medicamento = "INSERT INTO medicamento (nombre, marca, cantidad, tipofarmaco, ubicacion) values ('$nombre', '$marca', '$cantidad', '$tipofarmaco', '$ubicacion')";
-//Mete mano ahora!
-$run_medicamento_q = $conn_dispmedico->query($query_medicamento);
+$conn_dispmedico = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "root");
+$result = $conn_dispmedico->query("SELECT * FROM medicamento WHERE ubicacion='".$ubicacion."'");
+if ($row = $result->fetch() == null) {
+
+	$query_medicamento = "INSERT INTO medicamento (nombre, marca, cantidad, tipofarmaco, ubicacion) values ('$nombre', '$marca', '$cantidad', '$tipofarmaco', '$ubicacion')";
+	//Mete mano ahora!
+	$run_medicamento_q = $conn_dispmedico->query($query_medicamento);
+}
+else {
+	echo 'Esta ubicación ya existe en la base de datos!';
+}
+
 ?>
