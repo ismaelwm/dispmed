@@ -13,25 +13,25 @@ if($from =='' and $until ==''){
 if($from == '' and $until != '' ){
 	$date= new DateTime($until);
 	$until = $date->format('Y-m-d');
-	$response = $db->query("SELECT * FROM medicamento");
+	$response = $db->query("SELECT * FROM medicamento where fecha <= '".$until."'");
 }
-
-$date= new DateTime($from);
-	$from = $date->format('Y-m-d');
 
 	
-if($until != ''){
+if($from != '' and $until == ''){
+	$date= new DateTime($from);
+	$from = $date->format('Y-m-d');
+	$response = $db->query("SELECT * FROM medicamento where fecha >= '".$from."'");	
+}
+
+if($from != '' and $until != ''){
+	$date= new DateTime($from);
+	$from = $date->format('Y-m-d');
 	$date= new DateTime($until);
 	$until = $date->format('Y-m-d');
-}else{
-	$until = date('Y-m-d');
+
+	$response = $db->query("SELECT * FROM medicamento WHERE fecha BETWEEN '".$from."' AND '".$until."'");
 }
 
-
-
-else{
-	$response = $db->query("SELECT * FROM medicamento where ".$criterio." LIKE "."'%".$buscar."%'");
-}
 
 $data = '';
 while ($res = $response->fetch()) {
@@ -51,4 +51,3 @@ $response->closeCursor();
 ?>
 
 
-?>

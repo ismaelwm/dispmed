@@ -181,6 +181,11 @@ if($_SESSION['username']== '')
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/medicamento.js"></script>
+		<script type="text/javascript">
+
+			
+
+		</script>
 		
 	</body>
 	</html>
