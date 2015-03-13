@@ -1,25 +1,28 @@
-   $(function() {
+    $(function() {
 
-          $('#acceder').click(function() {
-            
-            var nombre = $('#username').val(), pass = $('#password').val();
-            
-            $.ajax({
+      $('select').material_select();
+      
+      $('#acceder').click(function() {
 
-              type : 'POST',
-              url : 'bd/registrar.php',
-              data : {username: nombre, password: pass},
-              success : function(data) {
-                toast(data, 3000);
-                $('#username').val("");
-                $('#password').val("");
-              }
-            });
-          });
+        var nombre = $('#username').val(), pass = $('#password').val(), tipou = $('#tipo').val();
 
-          $('#cancelar').click(function(){
-            window.location = 'medicamento.php';
+        $.ajax({
 
-          });
+          type : 'POST',
+          url : 'bd/registrar.php',
+          data : {username: nombre, password: pass, tipo: tipou},
+          success : function(data) {
+            toast(data, 3000);
+            $('#username').val("");
+            $('#password').val("");
 
+          }
         });
+      });
+
+      $('#cancelar').click(function(){
+        window.location = 'medicamento.php';
+
+      });
+
+    });

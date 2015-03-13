@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if($_SESSION['username']== 1)
+if($_SESSION['username']!= '')
   header('location: medicamento.php');
 ?>
 

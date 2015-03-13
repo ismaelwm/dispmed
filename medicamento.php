@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if($_SESSION['username']!= 1)
+if($_SESSION['username']== '')
 	header('location: index.php');
 ?>
 
@@ -42,15 +42,26 @@ if($_SESSION['username']!= 1)
 			<ul class="tabs z-depth-1" id="staggered-test">
 				<li class="tab col s4"><a class="active" href="#test1">Buscar Medicamento</a></li>
 				<li class="tab col s4"><a href="#test2">Agregar Medicamento</a></li>
+				<li class="tab col s4"><a href="#test3">Reportes</a></li>
 			</ul>
 		</div>
 		
 		<div id="test1" class="col s12">
 
 			<form>
-				<div class="input-field col s12">
-					<input id="buscar" type="text" class="validate">
-					<label for="buscar">Buscar</label>
+				<div class="row">
+					<div class="input-field col s10">
+						<input id="buscar" type="text" class="validate">
+						<label for="buscar">Buscar</label>
+					</div>
+					<div class="col s2">
+						<select id="criterio">
+							<option value="nombre">Nombre</option>
+							<option value="tipoFarmaco">T/Fármaco</option>
+							<option value="Marca">Marca</option>
+							<option value="ubicacion">Ubicación</option>
+						</select>
+					</div>
 				</div>
 			</form>
 
@@ -100,9 +111,9 @@ if($_SESSION['username']!= 1)
 					<div class="col s6">
 						<label>Tipo Fármaco</label>
 						<select id="tipoFarmaco" name="tipoFarmaco">
-							<option value="1">Capsula</option>
-							<option value="2">Comprimido</option>
-							<option value="3">Jarabe</option>
+							<option value="Capsula">Capsula</option>
+							<option value="Comprimido">Comprimido</option>
+							<option value="Jarabe">Jarabe</option>
 						</select>
 					</div>
 				</div>
@@ -126,14 +137,43 @@ if($_SESSION['username']!= 1)
 					</div>
 				</div>
 				
-			<div class="buttons">
-				<button id="aceptar" class="btn waves-effect waves-light" type="submit" name="action">Agregar</button>
-				<button id = "cancelar" class="red darken-1 waves-effect btn" type="button">Cancelar</button>
-			</div>
+				<div class="buttons">
+					<button id="aceptar" class="btn waves-effect waves-light" type="submit" name="action">Agregar</button>
+					<button id = "cancelar" class="red darken-1 waves-effect btn" type="button">Cancelar</button>
+				</div>
 			</form>
-			</div>
+		</div>
+
+		<div id="test3" class ="col s12">
 			
-		
+			<div class="row">
+				<form>
+					<div class="col s4">
+						<label for="from">Desde</label>
+						<input id="from" type="date" class="datepicker">
+					</div>
+					<div class="col s4">
+						<label for="until">Hasta</label>
+						<input id="until" type="date" class="datepicker">
+					</div>
+				</form>
+				<button id="reporte" class="btn waves-effect waves-light col s4 " >Reporte</button>
+				<button id="exportar" class="btn waves-effect waves-light col s2 offset-s1" >Exportar</button>
+			</div>
+
+			<table class="striped" id="reporteMedicamento">
+				<tr>
+					<th>Usuario</th>
+					<th>Nombre</th>
+					<th>T/Fármaco</th>
+					<th>Marca</th>
+					<th>Cantidad</th>
+					<th>Ubicacion</th>
+					<th>Fecha</th>
+				</tr>
+			</table>
+			
+		</div>
 
 		
 		<!--Import jQuery before materialize.js-->
@@ -141,6 +181,6 @@ if($_SESSION['username']!= 1)
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/medicamento.js"></script>
-
+		
 	</body>
 	</html>

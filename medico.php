@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if($_SESSION['username']!= 1)
+if($_SESSION['username']== '')
 	header('location: index.php');
 ?>
 
@@ -41,19 +41,32 @@ if($_SESSION['username']!= 1)
 			</nav>
 
 			<ul class="tabs z-depth-1">
-				<li class="tab col s6"><a class="active" href="#test1">Buscar Médico</a></li>
-				<li class="tab col s6"><a href="#test2">Agregar Médico</a></li>
-				
+				<li class="tab col s4"><a class="active" href="#test1">Buscar Médico</a></li>
+				<li class="tab col s4"><a href="#test2">Agregar Médico</a></li>
+				<li class="tab col s4"><a href="#test3">Reportes</a></li>
 			</ul>
 		</div>
 		
 		<div id="test1" class="col s12">
 			<form>
-				<div class="input-field col s12">
+			<div class="row">
+				<div class="input-field col s10">
 					<input id="buscar" type="text" class="validate">
 					<label for="buscar">Buscar</label>
 				</div>
+					<div class="col s2">
+						<select id="criterio">
+							<option value="Nombre">Nombre</option>
+							<option value="Cedula">Cédula</option>
+							<option value="Tanda">Tanda</option>
+							<option value="Especialidad">Especialidad</option>
+							<option value="Estado">Estado</option>
+						</select>
+					</div>
+				</div>
 			</form>
+
+
 			<a class="btn waves-effect" id="searchButton">Buscar
 				<i class="mdi-content-send right"></i>
 			</a>
@@ -99,8 +112,8 @@ if($_SESSION['username']!= 1)
 					<div class="col s6">
 						<label>Tanda</label>
 						<select id="tanda" name="tanda">
-							<option value="0">Matutina</option>
-							<option value="1">Vespertina</option>
+							<option value="Matutina">Matutina</option>
+							<option value="Vespertina">Vespertina</option>
 						</select>
 					</div>
 				</div>
@@ -109,8 +122,8 @@ if($_SESSION['username']!= 1)
 					<div class="col s6">
 						<label>Estado</label>
 						<select  id="estado" name="estado">
-							<option value="0">Activo</option>
-							<option value="1">Inactivo</option>
+							<option value="Activo">Activo</option>
+							<option value="Inactivo">Inactivo</option>
 						</select>
 					</div>
 				</div>
@@ -119,12 +132,12 @@ if($_SESSION['username']!= 1)
 					<button id = "cancelar" class="btn waves-effect red darken-1" type="button">Cancelar</button>
 				</div>
 			</form>
-
-			
 		</div>
 		
 
-		
+		<div id="test3" class ="col s12">
+			
+		</div>
 
 		<!--Import jQuery before materialize.js-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

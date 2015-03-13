@@ -1,17 +1,18 @@
 <?php 
 
-$nombre = $_POST['buscar'];
+$buscar = $_POST['buscar'];
+$criterio = $_POST['criterio'];
+
+
+
 
 $db = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
 
-if ($nombre ==''){
+if ($buscar ==''){
 	$response = $db->query("SELECT * FROM medico");
 }else{
-	$response = $db->query("SELECT * FROM medico where Nombre like'%".$nombre."%'");
+	$response = $db->query("SELECT * FROM medico where ".$criterio." LIKE "."'%".$buscar."%'");
 }
-
-
-
 
 $data = '';
 while ($res = $response->fetch()) {

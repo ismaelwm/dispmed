@@ -9,12 +9,14 @@ $p_salt = sha1(md5($salt . $password));
 $db= new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
 $result = $db->query("SELECT * FROM users WHERE username ='".$username. "' AND password='".$p_salt."'");
 
-if($row=$result->fetch() == null){
+$row=$result->fetch();
+if($row== null){
 
 	echo 'Verifique su usuario y contraseña!';
 } else {
 	session_start();
-	$_SESSION['username']=1;
+	$_SESSION['username']=$username;
+	$_SESSION['tipo']= $row['tipo'];
 	session_write_close();
 }
 

@@ -1,5 +1,8 @@
 $(function() {
 
+	 $('.datepicker').pickadate({
+  });
+
 	$('select').material_select();
 	
 	$(".button-collapse").sideNav();

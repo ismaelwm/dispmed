@@ -1,7 +1,7 @@
 <?php 
 session_start();
-if($_SESSION['username']!= 1)
-	header('location: index.php');
+if($_SESSION['tipo'] != 'admin')
+  header('location: medicamento.php');
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +33,12 @@ if($_SESSION['username']!= 1)
             <input id="password" type="password" >
             <label for="password">Contraseña</label>
           </div>
+        </div>
+        <div class="row">
+              <select id="tipo">
+              <option value="usuario">Usuario</option>
+              <option value="admin">Administrador</option>
+            </select>
         </div>
       </form>
       <button id="acceder" class="btn waves-effect waves-light col s6 " >Registrar</button>

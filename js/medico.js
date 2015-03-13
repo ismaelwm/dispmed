@@ -27,7 +27,7 @@ $(function() {
 	$('#searchButton').click(function() {
 		
 
-		var nombre = $('#buscar').val(),
+		var nombre = $('#buscar').val(), crite = $('#criterio').val(),
 		etiqueta = '<table class= "striped" id=tablaMedico>'+
 		'<tr><th>Nombre</th><th>Cedula</th><th>Tanda</th><th>Especialidad</th><th>Estado</th></tr><tr>';
 		if (tmp != nombre)
@@ -39,9 +39,9 @@ $(function() {
 
 				type : 'POST',
 				url : 'bd/buscar_medico.php',
-				data : {buscar:nombre},
+				data : {buscar:nombre, criterio:crite},
 				success : function(d) {
-
+		
 					if (d==''){
 
 						toast('No se encontraron coincidencias', 3000);
