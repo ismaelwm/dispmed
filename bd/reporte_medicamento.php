@@ -47,7 +47,7 @@ while ($res = $response->fetch()) {
 }
 
 echo $data;
-$response->closeCursor();
+
 ?>
 
 

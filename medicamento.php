@@ -158,7 +158,14 @@ if($_SESSION['username']== '')
 					</div>
 				</form>
 				<button id="reporte" class="btn waves-effect waves-light col s4 " >Reporte</button>
-				<button id="exportar" class="btn waves-effect waves-light col s2 offset-s1" >Exportar</button>
+				
+
+				<form action="bd/exportar.php" method="post" id="ExportarTabla">
+					<button id="exportar" class="btn waves-effect waves-light col s2 offset-s1" >Exportar</button>
+					<input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
+					<input type="hidden" id="tiporeporte" name="tiporeporte" value="Medicamento">
+				</form>
+
 			</div>
 
 			<table class="striped" id="reporteMedicamento">
@@ -172,6 +179,8 @@ if($_SESSION['username']== '')
 					<th>Fecha</th>
 				</tr>
 			</table>
+
+			
 			
 		</div>
 
@@ -181,16 +190,7 @@ if($_SESSION['username']== '')
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/medicamento.js"></script>
-		<script type="text/javascript">
-    $(document).ready(function () {
-        $("#exportar").click(function () {
-            $("#reporteMedicamento").battatech_excelexport({
-                containerid: "reporteMedicamento"
-               , datatype: 'table'
-            });
-        });
-    });
-</script>
+
 		
 	</body>
 	</html>

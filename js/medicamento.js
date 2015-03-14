@@ -88,8 +88,9 @@ $(function() {
 			url : 'bd/reporte_medicamento.php',
 			data : {from:ffrom, until:funtil},
 			success : function(data) {
+				
 
-				if (data==''){
+				if (data.indexOf('*')==-1){
 
 					toast('No se encontraron registros!', 3000);
 
@@ -111,4 +112,10 @@ $(function() {
 		}); 
 		
 	});
+
+	$("#exportar").click(function(event) {
+		$("#datos_a_enviar").val( $("<div>").append( $("#reporteMedicamento").eq(0).clone()).html());
+		$("#ExportarTabla").submit();
+	});
+
 });
