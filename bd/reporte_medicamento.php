@@ -1,7 +1,7 @@
 <?php 
 
-$from = $_POST['from'];
-$until = $_POST['until'];
+$from = str_replace(",","",$_POST['from']);
+$until= str_replace(",","",$_POST['until']);
 
 
 $db = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
