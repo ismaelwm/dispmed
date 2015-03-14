@@ -1,7 +1,7 @@
 <?php 
 session_start();
-if($_SESSION['username']== 1)
-  header('location: medicamento.php');
+if($_SESSION['username']!= 1)
+	header('location: index.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ if($_SESSION['username']== 1)
   <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
   <link rel="stylesheet" type="text/css" href="css/login.css">
   <link href="img/dispmed.ico" rel="shortcut icon" type="image/x-icon">
-  <title>DispMed-Login</title>
+  <title>DispMed-Registro</title>
 </head>
 <body>
 
@@ -30,17 +30,18 @@ if($_SESSION['username']== 1)
         </div>
         <div class="row">
           <div class="input-field">
-            <input id="password" type="password">
+            <input id="password" type="password" >
             <label for="password">Contraseña</label>
           </div>
         </div>
       </form>
-      <button id="acceder" class="btn waves-effect waves-light col s12" >Acceder</button>
+      <button id="acceder" class="btn waves-effect waves-light col s6 " >Registrar</button>
+      <button id="cancelar" class="btn waves-effect waves-light col s5 offset-s1" >Salir</button>
     </div>
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
-
+    <script type="text/javascript" src="js/registro.js"></script>
+    
   </body>
   </html>

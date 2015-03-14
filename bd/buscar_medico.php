@@ -7,8 +7,11 @@ $db = new PDO("mysql:host=localhost;dbname=dispmedico", "root", "");
 if ($nombre ==''){
 	$response = $db->query("SELECT * FROM medico");
 }else{
-	$response = $db->query("SELECT * FROM medico where Nombre='".$nombre."'");
+	$response = $db->query("SELECT * FROM medico where Nombre like'%".$nombre."%'");
 }
+
+
+
 
 $data = '';
 while ($res = $response->fetch()) {

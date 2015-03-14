@@ -1,6 +1,4 @@
-        $(function() {
-
-
+   $(function() {
 
           $('#acceder').click(function() {
             
@@ -9,17 +7,19 @@
             $.ajax({
 
               type : 'POST',
-              url : 'bd/validar.php',
+              url : 'bd/registrar.php',
               data : {username: nombre, password: pass},
               success : function(data) {
-                
-                if (data.trim() == '') {
-                  window.location = 'medicamento.php';
-                } 
-                else {
-                  toast(data, 3000);
-                }
+                toast(data, 3000);
+                $('#username').val("");
+                $('#password').val("");
               }
             });
-          });  
+          });
+
+          $('#cancelar').click(function(){
+            window.location = 'medicamento.php';
+
+          });
+
         });
