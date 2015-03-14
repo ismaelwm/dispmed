@@ -182,10 +182,15 @@ if($_SESSION['username']== '')
 		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/medicamento.js"></script>
 		<script type="text/javascript">
-
-			
-
-		</script>
+    $(document).ready(function () {
+        $("#exportar").click(function () {
+            $("#reporteMedicamento").battatech_excelexport({
+                containerid: "reporteMedicamento"
+               , datatype: 'table'
+            });
+        });
+    });
+</script>
 		
 	</body>
 	</html>
