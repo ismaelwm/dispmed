@@ -1,0 +1,8 @@
+______________
+Administrador:
+User: admin
+Pass: admin
+____________
+Usuario:
+User: esteban
+Pass: 12345
