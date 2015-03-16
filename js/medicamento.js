@@ -1,6 +1,7 @@
 $(function() {
 
 
+//Insertar medicamento
 	$('#medicamentoform').submit(function () {
 
 		$.post("bd/insertar_medicamento.php",$("#medicamentoform").serialize(), 
@@ -22,7 +23,6 @@ $(function() {
 
 				}
 
-
 			});
 
 		return false;
@@ -30,7 +30,7 @@ $(function() {
 
 
 
-	
+//Buscar medicamento	
 	$('#searchButton').click(function() {
 		
 
@@ -70,7 +70,8 @@ $(function() {
 		
 	});
 
-	
+
+//Reporte de medicamentos	
 	$('#reporte').click(function() {
 
 		
@@ -113,6 +114,7 @@ $(function() {
 		
 	});
 
+	//Exportar reporte
 	$("#exportar").click(function(event) {
 		$("#datos_a_enviar").val( $("<div>").append( $("#reporteMedicamento").eq(0).clone()).html());
 		$("#ExportarTabla").submit();

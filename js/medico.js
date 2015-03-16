@@ -64,4 +64,52 @@ $(function() {
 		}); 
 		
 	});
+
+	$('#reporte').click(function() {
+
+		
+
+		var ffrom = $('#from').val(), funtil = $('#until').val(),
+		etiqueta = '<table class= "striped" id=reporteMedico>'+
+		'<tr><th>Usuario</th><th>Nombre</th><th>Cedula</th><th>Tanda</th><th>Especialidad</th><th>Estado</th><th>Fecha</th></tr><tr>';
+
+
+		
+
+		$.ajax({
+
+			type : 'POST',
+			url : 'bd/reporte_medico.php',
+			data : {from:ffrom, until:funtil},
+			success : function(data) {
+				
+
+				if (data.indexOf('*')==-1){
+
+					toast('No se encontraron registros!', 3000);
+
+				}else{
+					var r = data.split('*');
+					for (var i = 0; i < r.length-1; i++) {
+
+						if (r[i] == 'tr')
+							etiqueta += '</tr><tr>';
+						else
+							etiqueta += '<td>'+ r[i]+'</td>';
+					}
+					etiqueta += '</tr></table>';  
+					$('#reporteMedico').html(etiqueta); 
+
+
+				}  
+			}
+		}); 
+		
+	});
+
+	$("#exportar").click(function(event) {
+		$("#datos_a_enviar").val( $("<div>").append( $("#reporteMedico").eq(0).clone()).html());
+		$("#ExportarTabla").submit();
+	});
+
 });

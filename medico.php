@@ -29,11 +29,13 @@ if($_SESSION['username']== '')
 						<ul class="right hide-on-med-and-down" id="staggered-test">
 							<li><a href="medicamento.php">Medicamento</i></a></li>
 							<li><a href="#">Médico</a></li>
+							<li><a id="registro" href="registro.php">Registro</a></li>
 							<li><a href="bd/cerrarsesion.php">Cerrar Sesión</a></li>
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a href="medicamento.php">Medicamento</i></a></li>
 							<li><a href="#">Médico</a></li>
+							<li><a id="registroCollapse" href="registro.php">Registro</a></li>
 							<li><a href="bd/cerrarsesion.php">Cerrar Sesión</a></li>
 						</ul>
 					</div>
@@ -49,11 +51,11 @@ if($_SESSION['username']== '')
 		
 		<div id="test1" class="col s12">
 			<form>
-			<div class="row">
-				<div class="input-field col s10">
-					<input id="buscar" type="text" class="validate">
-					<label for="buscar">Buscar</label>
-				</div>
+				<div class="row">
+					<div class="input-field col s10">
+						<input id="buscar" type="text" class="validate">
+						<label for="buscar">Buscar</label>
+					</div>
 					<div class="col s2">
 						<select id="criterio">
 							<option value="Nombre">Nombre</option>
@@ -136,6 +138,39 @@ if($_SESSION['username']== '')
 		
 
 		<div id="test3" class ="col s12">
+			<div class="row">
+				<form>
+					<div class="col s4">
+						<label for="from">Desde</label>
+						<input id="from" type="date" class="datepicker">
+					</div>
+					<div class="col s4">
+						<label for="until">Hasta</label>
+						<input id="until" type="date" class="datepicker">
+					</div>
+				</form>
+				<button id="reporte" class="btn waves-effect waves-light col s4 " >Reporte</button>
+				
+
+				<form action="bd/exportar.php" method="post" id="ExportarTabla">
+					<button id="exportar" class="btn waves-effect waves-light col s2 offset-s1" >Exportar</button>
+					<input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
+					<input type="hidden" id="tiporeporte" name="tiporeporte" value="Medico">
+				</form>
+
+			</div>
+
+			<table class="striped" id="reporteMedico">
+				<tr>
+					<th>Usuario</th>
+					<th>Nombre</th>
+					<th>Cédula</th>
+					<th>Tanda</th>
+					<th>Especialidad</th>
+					<th>Estado</th>
+					<th>Fecha</th>
+				</tr>
+			</table>
 			
 		</div>
 
@@ -144,6 +179,17 @@ if($_SESSION['username']== '')
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/medico.js"></script>
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+				var tipo = '<?php echo $_SESSION['tipo']?>';
+				if (tipo !='admin'){
+					$('#registro').hide();
+					$('#registroCollapse').hide();
+				}	
+			});
+
+		</script>
 		
 	</body>
 	</html>

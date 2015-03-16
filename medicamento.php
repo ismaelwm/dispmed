@@ -28,11 +28,13 @@ if($_SESSION['username']== '')
 						<ul class="right hide-on-med-and-down" id="staggered-test">
 							<li><a href="#">Medicamento</i></a></li>
 							<li><a href="medico.php">Médico</a></li>
+							<li><a id="registro" href="registro.php">Registro</a></li>
 							<li><a href="bd/CerrarSesion.php">Cerrar Sesión</a></li>
 						</ul>
 						<ul class="side-nav" id="mobile-demo">
 							<li><a href="#">Medicamento</i></a></li>
 							<li><a href="medico.php">Médico</a></li>
+							<li><a id="registroCollapse" href="registro.php">Registro</a></li>
 							<li><a href="bd/cerrarsesion.php">Cerrar Sesión</a></li>
 						</ul>
 					</div>
@@ -179,8 +181,6 @@ if($_SESSION['username']== '')
 					<th>Fecha</th>
 				</tr>
 			</table>
-
-			
 			
 		</div>
 
@@ -190,6 +190,17 @@ if($_SESSION['username']== '')
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/medicamento.js"></script>
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+				var tipo = '<?php echo $_SESSION['tipo']?>';
+				if (tipo !='admin'){
+					$('#registro').hide();
+					$('#registroCollapse').hide();
+				}	
+			});
+
+		</script>
 
 		
 	</body>
